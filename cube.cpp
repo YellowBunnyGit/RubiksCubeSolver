@@ -256,10 +256,10 @@ public:
 		if (FU == D) goto L1_F;
 		goto L1_U;
 	L1_F:
-		move_F();
+		move(F);
 	L1_U:
-		move_U();
-		move_YP();
+		move(U);
+		move(YP);
 		goto L1;
 	L1_1:
 		if (UR == D) goto L1_2;
@@ -272,38 +272,38 @@ public:
 		goto L1_Y;
 	L2:
 		if (FU == F) goto L2_1;
-		move_U();
-		move_YP();
+		move(U);
+		move(YP);
 		goto L2;
 	L2_1:
-		move_F();
-		move_F();
-		move_YP();
+		move(F);
+		move(F);
+		move(YP);
 		if (UF == D) goto L2;
 		debug(L3);
 	L3_Y:
-		move_Y();
+		move(Y);
 	L3:
 		if (DFR == D) goto L3_2;
 		if (FDR == D) goto L3_1;
 		if (RDF == D) goto L3_1;
-		move_R();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
-		move_U();
+		move(R);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
+		move(U);
 		goto L3;
 	L3_1:
 		if (DFR == D) goto L3_2;
-		move_R();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
-		move_U();
-		move_U();
-		move_U();
+		move(R);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
+		move(U);
+		move(U);
+		move(U);
 		goto L3_1;
 	L3_2:
 		if (DBR == D) goto L3_3;
@@ -315,32 +315,32 @@ public:
 		if (DFL == D) mgoto(L4);
 		goto L3_Y;
 	L4_Y:
-		move_Y();
+		move(Y);
 	L4:
 		if (FDR == F) goto L4_11;
 	L4_1:
-		move_R();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
+		move(R);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
 		if (DFR == D) goto L4;
 	L4_2:
 		if (UFL == L) goto L4_3;
-		move_U();
-		move_YP();
+		move(U);
+		move(YP);
 		goto L4_2;
 	L4_3:
-		move_L();
-		move_L();
-		move_L();
-		move_U();
-		move_U();
-		move_U();
-		move_L();
+		move(L);
+		move(L);
+		move(L);
+		move(U);
+		move(U);
+		move(U);
+		move(L);
 	L4_4:
-		move_U();
-		move_YP();
+		move(U);
+		move(YP);
 		if (DFR == D) goto L4_4;
 		goto L4_1;
 	L4_11:
@@ -355,23 +355,23 @@ public:
 	L5_1:
 		if (LU == U) goto L5_2;
 		if (UL == U) goto L5_2;
-		move_U();
+		move(U);
 		goto L5_1;
 	L5_2:
-		move_U();
-		move_F();
-		move_F();
-		move_F();
-		move_U();
-		move_F();
-		move_U();
-		move_R();
-		move_U();
-		move_U();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
+		move(U);
+		move(F);
+		move(F);
+		move(F);
+		move(U);
+		move(F);
+		move(U);
+		move(R);
+		move(U);
+		move(U);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
 	L5_4:
 		if (FR == U) goto L5_5;
 		if (RF == U) goto L5_5;
@@ -397,12 +397,12 @@ public:
 		if (LF == U) mgoto(L6);
 		if (FL == U) mgoto(L6);
 	L5_Y:
-		move_Y();
+		move(Y);
 		goto L5;
 	L6:
-		move_D();
+		move(D);
 	L6_0:
-		move_Y();
+		move(Y);
 		if (FR == F) goto L6_8;
 	L6_1:
 		if (UL == F) goto L6_3;
@@ -413,15 +413,15 @@ public:
 	L6_3:
 		if (LU == R) goto L5_2;
 	L6_4:
-		move_U();
+		move(U);
 		goto L6_1;
 	L6_8:
 		if (RF == R) goto L6_9;
 		goto L6_1;
 	L6_9:
-		move_D();
-		move_D();
-		move_D();
+		move(D);
+		move(D);
+		move(D);
 		debug(L7);
 	L7:
 		if (UL == U) goto L7_1;
@@ -432,55 +432,55 @@ public:
 	L7_2:
 		if (UR == U) mgoto(L8);
 	L7_3:
-		move_Y();
+		move(Y);
 	L7_4:
-		move_F();
-		move_R();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
-		move_U();
-		move_U();
-		move_U();
+		move(F);
+		move(R);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
+		move(U);
+		move(U);
+		move(U);
 	L7_5:
-		move_F();
+		move(F);
 		if (DF == D) goto L7;
 		goto L7_5;
 	L8:
 		if (FU == F) goto L8_1;
-		move_U();
+		move(U);
 		goto L8;
 	L8_1:
 		if (RU == R) goto L8_3;
-		move_R();
-		move_U();
-		move_R();
-		move_R();
-		move_R();
-		move_U();
-		move_R();
-		move_U();
-		move_U();
+		move(R);
+		move(U);
+		move(R);
+		move(R);
+		move(R);
+		move(U);
+		move(R);
+		move(U);
+		move(U);
 	L8_2:
-		move_R();
+		move(R);
 		if (DR == D) goto L8_1;
 		goto L8_2;
 	L8_3:
 		if (BU == B) mgoto(L9);
-		move_YP();
+		move(YP);
 		goto L8;
 	L9:
 		if (UFR == U) goto L9_1;
-		move_D();
-		move_F();
-		move_D();
-		move_D();
-		move_D();
+		move(D);
+		move(F);
+		move(D);
+		move(D);
+		move(D);
 	L10_4:
-		move_F();
-		move_F();
-		move_F();
+		move(F);
+		move(F);
+		move(F);
 		goto L9;
 	L9_1:
 		if (UBR == U) goto L9_2;
@@ -494,7 +494,7 @@ public:
 	L9_4:
 		if (FU == F) mgoto(L10);
 	L9_5:
-		move_U();
+		move(U);
 		goto L9;
 	L10:
 		if (BUL == B) goto L10_2;
@@ -503,26 +503,27 @@ public:
 		if (RUB == R) goto L10_1;
 		goto L10_3;
 	L10_1:
-		move_Y();
+		move(Y);
 		goto L10;
 	L10_2:
 		if (LUF == L) mgoto(L_EXIT);
 	L10_3:
-		move_U();
-		move_U();
-		move_U();
-		move_B();
-		move_B();
-		move_B();
-		move_U();
-		move_F();
-		move_U();
-		move_U();
-		move_U();
-		move_B();
-		move_U();
+		move(U);
+		move(U);
+		move(U);
+		move(B);
+		move(B);
+		move(B);
+		move(U);
+		move(F);
+		move(U);
+		move(U);
+		move(U);
+		move(B);
+		move(U);
 		goto L10_4;
 	L_EXIT:
+		std::cout << std::endl;
 		return *this;
 	}
 };
