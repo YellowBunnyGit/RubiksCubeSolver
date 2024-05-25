@@ -1,7 +1,16 @@
 #include <iostream>
 #include <random>
 
+#ifndef DEBUG_MODE
+#define mgoto(x) {goto x;}
+#define debug(x) {0;}
+#endif
+#ifdef DEBUG_MODE
 #define mgoto(x) {std::cout << #x << std::endl; goto x;}
+#define debug(x) {std::cout << #x << std::endl;}
+#endif
+
+#define move(x) {std::cout << #x; move_ ## x ();}
 
 class Cube {
 public:
@@ -237,7 +246,7 @@ public:
 	
 	Cube &solve(void) {
 	L1_Y:
-		move_Y();
+		move(Y);
 	L1:
 		if (UF == D) goto L1_1;
 		if (LF == D) goto L1_F;
@@ -271,6 +280,7 @@ public:
 		move_F();
 		move_YP();
 		if (UF == D) goto L2;
+		debug(L3);
 	L3_Y:
 		move_Y();
 	L3:
@@ -302,7 +312,7 @@ public:
 		if (DBL == D) goto L3_4;
 		goto L3_Y;
 	L3_4:
-		if (DFL == D) goto L4;
+		if (DFL == D) mgoto(L4);
 		goto L3_Y;
 	L4_Y:
 		move_Y();
@@ -337,7 +347,7 @@ public:
 		if (RDB == R) goto L4_12;
 		goto L4_Y;
 	L4_12:
-		if (BDL == B) goto L5;
+		if (BDL == B) mgoto(L5);
 		goto L4_Y;
 	L5:
 		if (FR == U) goto L5_11;
@@ -369,8 +379,11 @@ public:
 		goto L5_2;
 	L5_5:
 		if (FD == F) goto L5;
+		goto L5_2;
 	L5_6:
-		if (RF == R) goto L6_0;
+		if (RF == R) mgoto(L6_0);
+		std::cout << "not unreachable lol";
+		exit(0);
 		goto L5_2;
 	L5_11:
 		if (RB == U) goto L5_12;
@@ -381,8 +394,8 @@ public:
 		if (LB == U) goto L5_13;
 		goto L5_Y;
 	L5_13:
-		if (LF == U) goto L6;
-		if (FL == U) goto L6;
+		if (LF == U) mgoto(L6);
+		if (FL == U) mgoto(L6);
 	L5_Y:
 		move_Y();
 		goto L5;
@@ -409,6 +422,7 @@ public:
 		move_D();
 		move_D();
 		move_D();
+		debug(L7);
 	L7:
 		if (UL == U) goto L7_1;
 		goto L7_3;
@@ -416,7 +430,7 @@ public:
 		if (UF == U) goto L7_2;
 		goto L7_4;
 	L7_2:
-		if (UR == U) goto L8;
+		if (UR == U) mgoto(L8);
 	L7_3:
 		move_Y();
 	L7_4:
@@ -453,7 +467,7 @@ public:
 		if (DR == D) goto L8_1;
 		goto L8_2;
 	L8_3:
-		if (BU == B) goto L9;
+		if (BU == B) mgoto(L9);
 		move_YP();
 		goto L8;
 	L9:
@@ -478,7 +492,7 @@ public:
 		if (UFL == U) goto L9_4;
 		goto L9_5;
 	L9_4:
-		if (FU == F) goto L10;
+		if (FU == F) mgoto(L10);
 	L9_5:
 		move_U();
 		goto L9;
@@ -492,7 +506,7 @@ public:
 		move_Y();
 		goto L10;
 	L10_2:
-		if (LUF == L) goto L_EXIT;
+		if (LUF == L) mgoto(L_EXIT);
 	L10_3:
 		move_U();
 		move_U();
@@ -509,15 +523,16 @@ public:
 		move_U();
 		goto L10_4;
 	L_EXIT:
-		
 		return *this;
 	}
 };
 
 int main() {
 	Cube cube;
-	cube.scramble();
-	cube.print();
-	cube.solve();
-	cube.print();
+	do {
+		cube.scramble();
+		cube.print();
+		cube.solve();
+		cube.print();
+	} while (false);
 }
