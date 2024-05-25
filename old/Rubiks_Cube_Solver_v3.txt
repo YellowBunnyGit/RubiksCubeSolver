@@ -1,0 +1,211 @@
+1_Y:rot Y
+1:je UF D 1_1
+je LF D 1_F
+je DF D 1_F
+je RF D 1_F
+je FD D 1_F
+je FU D 1_F
+jmp 1_U
+1_F:mv F
+1_U:mv U
+rot YP
+jmp 1
+1_1:je UR D 1_2
+jmp 1_Y
+1_2:je UB D 1_3
+jmp 1_Y
+1_3:je UL D 2
+jmp 1_Y
+2:je FU F 2_1
+mv U
+rot YP
+jmp 2
+2_1:mv F
+mv F
+rot YP
+je UF D 2
+3_Y:rot Y
+3:je DFR D 3_2
+je FDR D 3_1
+je RDF D 3_1
+mv R
+mv U
+mv R
+mv R
+mv R
+mv U
+jmp 3
+3_1:je DFR D 3_2
+mv R
+mv U
+mv R
+mv R
+mv R
+mv U
+mv U
+mv U
+jmp 3_1
+3_2:je DBR D 3_3
+jmp 3_Y
+3_3:je DBL D 3_4
+jmp 3_Y
+3_4:je DFL D 4
+jmp 3_Y
+4_Y:rot Y
+4:je FDR F 4_11
+4_1:mv R
+mv U
+mv R
+mv R
+mv R
+je DFR D 4
+4_2:je UFL L 4_3
+mv U
+rot YP
+jmp 4_2
+4_3:mv L
+mv L
+mv L
+mv U
+mv U
+mv U
+mv L
+4_4:mv U
+rot YP
+je DFR D 4_4
+jmp 4_1
+4_11:je RBD R 4_12
+jmp 4_Y
+4_12:je BDL B 5
+jmp 4_Y
+5:je FR U 5_11
+je RF U 5_11
+5_1:je LU U 5_2
+je UL U 5_2
+mv U
+jmp 5_1
+5_2:mv U
+mv F
+mv F
+mv F
+mv U
+mv F
+mv U
+mv R
+mv U
+mv U
+mv U
+mv R
+mv R
+mv R
+5_4:je FR U 5_5
+je RF U 5_5
+je FR F 5_6
+jmp 5_2
+5_5:je FD F 5
+5_6:je RF R 6_0
+jmp 5_2
+5_11:je RB U 5_12
+je BR U 5_12
+jmp 5_Y
+5_12:je BL U 5_13
+je LB U 5_13
+jmp 5_Y
+5_13:je LF U 6
+je FL U 6
+5_Y:rot Y
+jmp 5
+6:mv D
+6_0:rot Y
+je FR F 6_8
+6_1:je UL F 6_3
+je LU F 6_2
+jmp 6_4
+6_2:je UL R 5_2
+6_3:je LU R 5_2
+6_4:mv U
+jmp 6_1
+6_8:je RF R 6_9
+jmp 6_1
+6_9:mv D
+mv D
+mv D
+7:je UL U 7_1
+jmp 7_3
+7_1:je UF U 7_2
+jmp 7_4
+7_2:je UR U 8
+7_3:rot Y
+7_4:mv F
+mv R
+mv U
+mv R
+mv R
+mv R
+mv U
+mv U
+mv U
+7_5:mv F
+je DF D 7
+jmp 7_5
+8:je FU F 8_1
+mv U
+jmp 8
+8_1:je RU R 8_3
+mv R
+mv U
+mv R
+mv R
+mv R
+mv U
+mv R
+mv U
+mv U
+8_2:mv R
+je DR D 8_1
+jmp 8_2
+8_3:je BU B 9
+rot YP
+jmp 8
+9:je UFR U 9_1
+mv D
+mv F
+mv D
+mv D
+mv D
+10_4:mv F
+mv F
+mv F
+jmp 9
+9_1:je UBR U 9_2
+jmp 9_5
+9_2:je UBL U 9_3
+jmp 9_5
+9_3:je ULF U 9_4
+jmp 9_5
+9_4:je FU F 10
+9_5:mv U
+jmp 9
+10:je BLU B 10_2
+je LFU L 10_1
+je FRU F 10_1
+je RBU R 10_1
+jmp 10_3
+10_1:rot Y
+jmp 10
+10_2:je LFU L EXIT
+10_3:mv U
+mv U
+mv U
+mv B
+mv B
+mv B
+mv U
+mv F
+mv U
+mv U
+mv U
+mv B
+mv U
+jmp 10_4
+EXIT:
